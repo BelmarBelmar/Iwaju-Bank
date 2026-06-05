@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nova Bank — Votre banque intelligente</title>
+  <title>Nova Bank - Votre banque de confiance</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -770,7 +770,7 @@
         <div class="bank-name">Nova<span>Bank</span></div>
       </div>
 
-      <h1>Votre banque,<br/>sécurisée à l'extrême</h1>
+      <h1>Votre banque<br/>de confiance</h1>
       <p>Connectez-vous avec votre compte Iwaju Auth pour accéder à votre espace bancaire personnel.</p>
 
       <button class="btn-iwaju" id="btn-login-iwaju">
@@ -1039,8 +1039,8 @@
     ═══════════════════════════════════════════════════ */
     const CONFIG = {
       API_BASE:      'https://authentication-kyc.onrender.com',
-      CLIENT_ID:     'VOTRE_CLIENT_ID',          // ← remplacer
-      CLIENT_SECRET: 'VOTRE_CLIENT_SECRET',       // ← remplacer
+      CLIENT_ID:     'lIiEmpM-reJzElcYq5jTHg',          // ← remplacer
+      CLIENT_SECRET: 'DTaA7TylpwTDWOFMVEOy6QNWqPcj9YIaLtNOBNdrGf4',       // ← remplacer
       REDIRECT_URI:  window.location.origin + window.location.pathname,
       STATE:         crypto.randomUUID(),
     };
@@ -1079,7 +1079,7 @@
        STEP 1 — Lancer le flow OAuth
     ═══════════════════════════════════════════════════ */
     document.getElementById('btn-login-iwaju').addEventListener('click', () => {
-      sessionStorage.setItem('oauth_state', CONFIG.STATE);
+      localStorage.setItem('oauth_state', CONFIG.STATE);
 
       const params = new URLSearchParams({
         client_id:     CONFIG.CLIENT_ID,
@@ -1099,12 +1099,12 @@
       showPage('page-callback');
 
       /* Vérification du state anti-CSRF */
-      const savedState = sessionStorage.getItem('oauth_state');
+      const savedState = localStorage.getItem('oauth_state');
       if (state !== savedState) {
         showError('Paramètre state invalide (possible CSRF). Veuillez réessayer.');
         return;
       }
-      sessionStorage.removeItem('oauth_state');
+      localStorage.removeItem('oauth_state');
 
       /* Échange code → token */
       try {
