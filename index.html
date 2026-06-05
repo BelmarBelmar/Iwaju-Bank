@@ -4,95 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Iwaju Bank - Votre banque de confiance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C97A;
-      --gold-dim: #7A6228;
-      --dark: #0D0D0F;
-      --dark-2: #141416;
-      --dark-3: #1C1C1F;
-      --dark-4: #242428;
-      --dark-5: #2E2E33;
-      --text: #F2EFE7;
-      --text-muted: #8A8880;
-      --text-dim: #4A4A4F;
-      --border: rgba(201,168,76,0.15);
-      --border-hover: rgba(201,168,76,0.35);
-      --danger: #E05C5C;
-      --success: #5CB87A;
-      --radius: 12px;
-      --radius-sm: 6px;
+      --forest:      #2c5f3e;
+      --forest-mid:  #3a7a52;
+      --forest-light:#5a9e6f;
+      --forest-pale: #a8d5ba;
+      --forest-dim:  #1e4229;
+      --cream:       #f5f2eb;
+      --cream-2:     #eeeae0;
+      --cream-3:     #e5e0d2;
+      --cream-4:     #d8d2c2;
+      --white:       #ffffff;
+      --text:        #1a2416;
+      --text-mid:    #3d4e39;
+      --text-muted:  #7a8c75;
+      --text-dim:    #b0bfa9;
+      --border:      rgba(44,95,62,0.12);
+      --border-hover:rgba(44,95,62,0.28);
+      --danger:      #c0392b;
+      --danger-light:#fce8e6;
+      --success:     #1a7a4a;
+      --success-light:#e6f4ec;
+      --radius:      12px;
+      --radius-sm:   6px;
+      --shadow-sm:   0 1px 3px rgba(26,36,22,0.06), 0 1px 2px rgba(26,36,22,0.04);
+      --shadow-md:   0 4px 12px rgba(26,36,22,0.08), 0 2px 4px rgba(26,36,22,0.05);
     }
 
     html, body {
       height: 100%;
-      background: var(--dark);
+      background: var(--cream);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-weight: 300;
       line-height: 1.6;
     }
 
-    /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--dark-2); }
-    ::-webkit-scrollbar-thumb { background: var(--dark-5); border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: var(--cream-2); }
+    ::-webkit-scrollbar-thumb { background: var(--cream-4); border-radius: 3px; }
 
-    /* ─── PAGES ─── */
     .page { display: none; min-height: 100vh; }
     .page.active { display: flex; flex-direction: column; }
 
-    /* ═══════════════════════════════
-       LANDING PAGE
-    ═══════════════════════════════ */
+    /* ═══ LANDING ═══ */
     #page-landing {
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
+      background: var(--cream);
     }
 
-    .bg-grid {
+    .bg-pattern {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
+        radial-gradient(circle at 20% 20%, rgba(44,95,62,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(44,95,62,0.04) 0%, transparent 50%);
       pointer-events: none;
     }
 
-    .bg-glow {
+    .bg-texture {
       position: absolute;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(44,95,62,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44,95,62,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
       pointer-events: none;
     }
 
     .landing-card {
       position: relative;
       z-index: 1;
-      background: var(--dark-2);
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 56px 64px;
-      max-width: 480px;
+      padding: 52px 60px;
+      max-width: 460px;
       width: 90%;
       text-align: center;
+      box-shadow: var(--shadow-md);
       animation: fadeUp 0.6s ease both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
@@ -105,33 +107,29 @@
     }
 
     .bank-logo-mark {
-      width: 42px;
-      height: 42px;
-      border: 1.5px solid var(--gold);
+      width: 40px;
+      height: 40px;
+      background: var(--forest);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .bank-logo-mark svg {
-      width: 22px;
-      height: 22px;
-    }
+    .bank-logo-mark svg { width: 22px; height: 22px; }
 
     .bank-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
       font-weight: 600;
       color: var(--text);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
-
-    .bank-name span { color: var(--gold); }
+    .bank-name span { color: var(--forest); }
 
     .landing-card h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
       font-weight: 500;
       color: var(--text);
       line-height: 1.2;
@@ -141,7 +139,7 @@
     .landing-card p {
       font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 40px;
+      margin-bottom: 36px;
       line-height: 1.7;
     }
 
@@ -149,7 +147,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin: 28px 0;
+      margin: 24px 0;
       color: var(--text-dim);
       font-size: 12px;
       letter-spacing: 0.1em;
@@ -159,38 +157,38 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--border);
+      background: var(--cream-3);
     }
 
-    /* ─── BUTTONS ─── */
     .btn-iwaju {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 15px 24px;
-      background: var(--gold);
-      color: var(--dark);
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--forest);
+      color: #fff;
       border: none;
       border-radius: var(--radius);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-size: 15px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
-      letter-spacing: 0.01em;
+      box-shadow: 0 2px 8px rgba(44,95,62,0.25);
     }
     .btn-iwaju:hover {
-      background: var(--gold-light);
+      background: var(--forest-mid);
       transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(44,95,62,0.3);
     }
     .btn-iwaju:active { transform: translateY(0); }
 
     .btn-iwaju .iwaju-icon {
       width: 22px;
       height: 22px;
-      background: var(--dark);
+      background: rgba(255,255,255,0.15);
       border-radius: 5px;
       display: flex;
       align-items: center;
@@ -200,51 +198,45 @@
 
     .btn-secondary {
       width: 100%;
-      padding: 14px 24px;
+      padding: 13px 24px;
       background: transparent;
       color: var(--text-muted);
-      border: 1px solid var(--border);
+      border: 1px solid var(--cream-4);
       border-radius: var(--radius);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-size: 15px;
       font-weight: 400;
       cursor: pointer;
       transition: all 0.2s;
     }
     .btn-secondary:hover {
-      border-color: var(--border-hover);
-      color: var(--text);
+      border-color: var(--forest-pale);
+      color: var(--forest);
+      background: var(--success-light);
     }
 
     .trust-badges {
-      margin-top: 32px;
+      margin-top: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
     }
-
     .trust-badge {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 11px;
       color: var(--text-dim);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
+    .trust-badge svg { width: 13px; height: 13px; color: var(--forest-light); }
 
-    .trust-badge svg {
-      width: 14px;
-      height: 14px;
-      color: var(--gold-dim);
-    }
-
-    /* ═══════════════════════════════
-       CALLBACK / LOADING PAGE
-    ═══════════════════════════════ */
+    /* ═══ CALLBACK ═══ */
     #page-callback {
       align-items: center;
       justify-content: center;
+      background: var(--cream);
     }
 
     .callback-box {
@@ -253,10 +245,10 @@
     }
 
     .spinner {
-      width: 48px;
-      height: 48px;
-      border: 2px solid var(--border);
-      border-top-color: var(--gold);
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--cream-3);
+      border-top-color: var(--forest);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin: 0 auto 24px;
@@ -264,72 +256,60 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .callback-box h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
       font-weight: 500;
       color: var(--text);
       margin-bottom: 8px;
     }
-
-    .callback-box p {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
+    .callback-box p { font-size: 14px; color: var(--text-muted); }
 
     .error-box {
       display: none;
-      background: rgba(224,92,92,0.08);
-      border: 1px solid rgba(224,92,92,0.25);
+      background: var(--danger-light);
+      border: 1px solid rgba(192,57,43,0.2);
       border-radius: var(--radius);
       padding: 20px 24px;
       margin-top: 24px;
-      text-align: center;
     }
     .error-box.visible { display: block; }
     .error-box p { color: var(--danger); font-size: 14px; margin-bottom: 12px; }
 
     .btn-retry {
-      padding: 10px 24px;
+      padding: 9px 22px;
       background: transparent;
       border: 1px solid var(--danger);
       border-radius: var(--radius-sm);
       color: var(--danger);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-size: 14px;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-retry:hover { background: rgba(224,92,92,0.1); }
+    .btn-retry:hover { background: rgba(192,57,43,0.08); }
 
-    /* ═══════════════════════════════
-       DASHBOARD PAGE
-    ═══════════════════════════════ */
-    #page-dashboard {
-      flex-direction: column;
-    }
+    /* ═══ DASHBOARD ═══ */
+    #page-dashboard { flex-direction: column; background: var(--cream); }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 40px;
+      padding: 18px 40px;
       border-bottom: 1px solid var(--border);
-      background: var(--dark-2);
+      background: var(--white);
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: var(--shadow-sm);
     }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
 
     .nav-brand-mark {
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--gold);
+      width: 30px;
+      height: 30px;
+      background: var(--forest);
       border-radius: 7px;
       display: flex;
       align-items: center;
@@ -337,241 +317,178 @@
     }
 
     .nav-brand-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
+      color: var(--text);
     }
-    .nav-brand-name span { color: var(--gold); }
+    .nav-brand-name span { color: var(--forest); }
 
-    .nav-user {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .nav-user { display: flex; align-items: center; gap: 12px; }
 
     .nav-avatar {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: var(--dark-4);
-      border: 1px solid var(--border-hover);
+      background: var(--success-light);
+      border: 1.5px solid var(--forest-pale);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      color: var(--gold);
+      color: var(--forest);
       letter-spacing: 0.05em;
     }
 
-    .nav-user-name {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
+    .nav-user-name { font-size: 14px; color: var(--text-muted); }
 
     .btn-logout {
-      padding: 8px 16px;
+      padding: 7px 14px;
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid var(--cream-4);
       border-radius: var(--radius-sm);
       color: var(--text-dim);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-size: 13px;
       cursor: pointer;
       transition: all 0.2s;
     }
     .btn-logout:hover {
-      border-color: var(--danger);
+      border-color: rgba(192,57,43,0.3);
       color: var(--danger);
+      background: var(--danger-light);
     }
 
     .dashboard-body {
       flex: 1;
-      padding: 40px;
+      padding: 36px 40px;
       max-width: 1100px;
       margin: 0 auto;
       width: 100%;
       animation: fadeUp 0.5s ease both;
     }
 
-    .welcome-row {
-      margin-bottom: 36px;
-    }
-
+    .welcome-row { margin-bottom: 32px; }
     .welcome-row h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
       font-weight: 500;
       color: var(--text);
       margin-bottom: 4px;
     }
-
-    .welcome-row p {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
+    .welcome-row p { font-size: 14px; color: var(--text-muted); }
 
     .auth-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
-      background: rgba(201,168,76,0.08);
-      border: 1px solid rgba(201,168,76,0.2);
+      padding: 4px 12px;
+      background: var(--success-light);
+      border: 1px solid rgba(44,95,62,0.2);
       border-radius: 100px;
       font-size: 12px;
-      color: var(--gold);
+      color: var(--forest);
       margin-top: 10px;
     }
-
-    .auth-badge svg {
-      width: 12px;
-      height: 12px;
-    }
+    .auth-badge svg { width: 11px; height: 11px; }
 
     /* ─── CARDS GRID ─── */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 14px;
+      margin-bottom: 28px;
     }
 
     .stat-card {
-      background: var(--dark-2);
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
-      transition: border-color 0.2s;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .stat-card:hover { border-color: var(--border-hover); }
+    .stat-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
 
     .stat-card-label {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-dim);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .stat-card-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
       font-weight: 500;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-
-    .stat-card-value.gold { color: var(--gold); }
+    .stat-card-value.forest { color: var(--forest); }
     .stat-card-value.success { color: var(--success); }
+    .stat-card-value.danger  { color: var(--danger); }
 
-    .stat-card-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .stat-card-sub { font-size: 12px; color: var(--text-dim); }
 
     /* ─── SECTION ─── */
     .section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
       font-weight: 500;
       color: var(--text);
     }
-
     .section-link {
       font-size: 13px;
-      color: var(--gold-dim);
+      color: var(--text-muted);
       cursor: pointer;
       transition: color 0.2s;
     }
-    .section-link:hover { color: var(--gold); }
-
-    /* ─── TRANSACTION TABLE ─── */
-    .transactions-card {
-      background: var(--dark-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 32px;
-    }
-
-    .tx-row {
-      display: grid;
-      grid-template-columns: 44px 1fr auto;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
-    }
-    .tx-row:last-child { border-bottom: none; }
-    .tx-row:hover { background: var(--dark-3); }
-
-    .tx-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--dark-4);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .tx-icon svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-muted);
-    }
-
-    .tx-info-label {
-      font-size: 14px;
-      color: var(--text);
-      font-weight: 400;
-      margin-bottom: 3px;
-    }
-
-    .tx-info-date {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
-    .tx-amount {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 500;
-      text-align: right;
-    }
-    .tx-amount.debit { color: var(--danger); }
-    .tx-amount.credit { color: var(--success); }
+    .section-link:hover { color: var(--forest); }
 
     /* ─── ACCOUNT CARD ─── */
     .account-visual {
-      background: var(--dark-3);
-      border: 1px solid var(--border);
+      background: var(--forest);
       border-radius: 16px;
       padding: 28px 32px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 24px rgba(44,95,62,0.2);
     }
 
     .account-visual::before {
       content: '';
       position: absolute;
-      width: 300px;
-      height: 300px;
+      width: 320px;
+      height: 320px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
-      top: -100px;
+      background: rgba(255,255,255,0.04);
+      top: -120px;
       right: -80px;
+      pointer-events: none;
+    }
+
+    .account-visual::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      bottom: -60px;
+      left: 60px;
       pointer-events: none;
     }
 
@@ -579,28 +496,28 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .account-type {
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--text-dim);
-      margin-bottom: 6px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 5px;
     }
 
     .account-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      color: var(--text-muted);
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
       letter-spacing: 0.08em;
     }
 
     .account-chip {
       width: 36px;
       height: 28px;
-      border: 1.5px solid var(--gold-dim);
+      border: 1.5px solid rgba(255,255,255,0.3);
       border-radius: 5px;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -609,90 +526,135 @@
     }
 
     .account-chip-line {
-      background: var(--gold-dim);
+      background: rgba(255,255,255,0.3);
       border-radius: 1px;
     }
 
     .account-balance-label {
-      font-size: 12px;
-      color: var(--text-dim);
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .account-balance {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 48px;
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
       font-weight: 500;
-      color: var(--text);
+      color: #fff;
       margin-bottom: 4px;
     }
 
     .account-balance-currency {
-      font-size: 20px;
-      color: var(--text-muted);
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
       margin-right: 8px;
     }
 
     .account-holder {
-      font-size: 13px;
-      color: var(--text-dim);
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
-    /* ─── ACTIONS ─── */
+    /* ─── QUICK ACTIONS ─── */
     .quick-actions {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .action-btn {
-      background: var(--dark-2);
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px 16px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
     }
     .action-btn:hover {
-      border-color: var(--border-hover);
-      background: var(--dark-3);
+      border-color: var(--forest-pale);
+      background: var(--success-light);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
+    .action-btn:active { transform: translateY(0); }
 
     .action-btn svg {
       width: 22px;
       height: 22px;
-      color: var(--gold);
+      color: var(--forest);
       margin: 0 auto 10px;
       display: block;
     }
-
     .action-btn span {
       font-size: 12px;
       color: var(--text-muted);
       display: block;
+      font-weight: 400;
     }
+
+    /* ─── TRANSACTIONS ─── */
+    .transactions-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tx-row {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 15px 22px;
+      border-bottom: 1px solid var(--cream-2);
+      transition: background 0.15s;
+    }
+    .tx-row:last-child { border-bottom: none; }
+    .tx-row:hover { background: var(--cream); }
+
+    .tx-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--cream-2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tx-icon svg { width: 17px; height: 17px; color: var(--text-muted); }
+
+    .tx-info-label { font-size: 14px; color: var(--text); font-weight: 400; margin-bottom: 2px; }
+    .tx-info-date  { font-size: 12px; color: var(--text-dim); }
+
+    .tx-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: right;
+    }
+    .tx-amount.debit  { color: var(--danger); }
+    .tx-amount.credit { color: var(--success); }
 
     /* ─── FOOTER ─── */
     .footer {
-      padding: 20px 40px;
+      padding: 18px 40px;
       border-top: 1px solid var(--border);
+      background: var(--white);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    .footer-left {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
+    .footer-left { font-size: 12px; color: var(--text-dim); }
     .footer-right {
       display: flex;
       align-items: center;
@@ -700,47 +662,35 @@
       font-size: 12px;
       color: var(--text-dim);
     }
-
-    .footer-right svg {
-      width: 14px;
-      height: 14px;
-      color: var(--gold);
-    }
+    .footer-right svg { width: 13px; height: 13px; color: var(--forest); }
 
     /* ─── TOKEN DEBUG ─── */
     .token-debug {
-      background: var(--dark-3);
+      background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 32px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
     }
-
     .token-debug-header {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
-    .token-debug-title {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+    .token-debug-title { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 
     .token-pill {
       display: inline-block;
       padding: 2px 8px;
-      background: rgba(92,184,122,0.12);
-      border: 1px solid rgba(92,184,122,0.25);
+      background: var(--success-light);
+      border: 1px solid rgba(44,95,62,0.2);
       border-radius: 4px;
       font-size: 11px;
-      color: var(--success);
+      color: var(--forest);
       font-family: 'Courier New', monospace;
       margin-bottom: 6px;
     }
-
     .token-value {
       font-family: 'Courier New', monospace;
       font-size: 12px;
@@ -752,19 +702,17 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════
-       PAGE 1 : LANDING
-  ═══════════════════════════════ -->
+  <!-- ═══ PAGE 1 : LANDING ═══ -->
   <div class="page active" id="page-landing">
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
+    <div class="bg-pattern"></div>
+    <div class="bg-texture"></div>
 
     <div class="landing-card">
       <div class="bank-logo">
         <div class="bank-logo-mark">
           <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M11 7V15M7 9.5L11 7L15 9.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M11 7V15M7 9.5L11 7L15 9.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="bank-name">Iwaju<span>Bank</span></div>
@@ -776,8 +724,8 @@
       <button class="btn-iwaju" id="btn-login-iwaju">
         <div class="iwaju-icon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="6" stroke="#C9A84C" stroke-width="1.3"/>
-            <path d="M7 4v3l2 2" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/>
+            <circle cx="7" cy="7" r="6" stroke="#fff" stroke-width="1.3"/>
+            <path d="M7 4v3l2 2" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
         </div>
         Continuer avec Iwaju Auth
@@ -812,9 +760,7 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════
-       PAGE 2 : CALLBACK / LOADING
-  ═══════════════════════════════ -->
+  <!-- ═══ PAGE 2 : CALLBACK ═══ -->
   <div class="page" id="page-callback">
     <div class="callback-box">
       <div class="spinner" id="spinner"></div>
@@ -828,16 +774,14 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════
-       PAGE 3 : DASHBOARD
-  ═══════════════════════════════ -->
+  <!-- ═══ PAGE 3 : DASHBOARD ═══ -->
   <div class="page" id="page-dashboard">
     <nav class="nav">
       <div class="nav-brand">
         <div class="nav-brand-mark">
           <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
-            <path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M11 7V15M7 9.5L11 7L15 9.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M11 7V15M7 9.5L11 7L15 9.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="nav-brand-name">Iwaju<span>Bank</span></div>
@@ -852,7 +796,7 @@
     <div class="dashboard-body">
 
       <div class="welcome-row">
-        <p style="font-size:13px; color: var(--text-dim); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:6px;">Bonjour,</p>
+        <p style="font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:5px;">Bonjour,</p>
         <h2 id="dash-name">—</h2>
         <div class="auth-badge">
           <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -862,7 +806,7 @@
         </div>
       </div>
 
-      <!-- Account visual card -->
+      <!-- Account card -->
       <div class="account-visual">
         <div class="account-visual-top">
           <div>
@@ -887,7 +831,7 @@
       <div class="cards-grid">
         <div class="stat-card">
           <div class="stat-card-label">Dépenses du mois</div>
-          <div class="stat-card-value" style="color:var(--danger)">XOF 312 800</div>
+          <div class="stat-card-value danger">XOF 312 800</div>
           <div class="stat-card-sub">↑ +8% vs mois dernier</div>
         </div>
         <div class="stat-card">
@@ -897,7 +841,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-card-label">Épargne</div>
-          <div class="stat-card-value gold">XOF 4 120 000</div>
+          <div class="stat-card-value forest">XOF 4 120 000</div>
           <div class="stat-card-sub">Compte Épargne Or</div>
         </div>
         <div class="stat-card">
@@ -1008,10 +952,10 @@
         </div>
       </div>
 
-      <!-- Token debug block -->
+      <!-- Token debug -->
       <div class="token-debug" id="token-debug">
         <div class="token-debug-header">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
           <span class="token-debug-title">Token JWT reçu (debug thesis)</span>
@@ -1034,20 +978,14 @@
   </div>
 
   <script>
-    /* ═══════════════════════════════════════════════════
-       CONFIGURATION — À ADAPTER À TON BACKEND
-    ═══════════════════════════════════════════════════ */
     const CONFIG = {
       API_BASE:      'https://authentication-kyc.onrender.com',
-      CLIENT_ID:     'lIiEmpM-reJzElcYq5jTHg',          // ← remplacer
-      CLIENT_SECRET: 'DTaA7TylpwTDWOFMVEOy6QNWqPcj9YIaLtNOBNdrGf4',       // ← remplacer
+      CLIENT_ID:     'lIiEmpM-reJzElcYq5jTHg',
+      CLIENT_SECRET: 'DTaA7TylpwTDWOFMVEOy6QNWqPcj9YIaLtNOBNdrGf4',
       REDIRECT_URI:  window.location.origin + window.location.pathname,
       STATE:         crypto.randomUUID(),
     };
 
-    /* ═══════════════════════════════════════════════════
-       UTILS
-    ═══════════════════════════════════════════════════ */
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
@@ -1067,7 +1005,6 @@
       return ((first?.[0] || '') + (last?.[0] || '')).toUpperCase() || '??';
     }
 
-    /* ─── Parse JWT payload (no verify — client side only) ─── */
     function parseJwt(token) {
       try {
         const base64 = token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
@@ -1075,85 +1012,58 @@
       } catch { return {}; }
     }
 
-    /* ═══════════════════════════════════════════════════
-       STEP 1 — Lancer le flow OAuth
-    ═══════════════════════════════════════════════════ */
     document.getElementById('btn-login-iwaju').addEventListener('click', () => {
       localStorage.setItem('oauth_state', CONFIG.STATE);
-
       const params = new URLSearchParams({
         client_id:     CONFIG.CLIENT_ID,
         redirect_uri:  CONFIG.REDIRECT_URI,
         state:         CONFIG.STATE,
         response_type: 'code',
       });
-
-      const authorizeUrl = `${CONFIG.API_BASE}/api/v1/oauth/authorize?${params}`;
-      window.location.href = authorizeUrl;
+      window.location.href = `${CONFIG.API_BASE}/api/v1/oauth/authorize?${params}`;
     });
 
-    /* ═══════════════════════════════════════════════════
-       STEP 2 — Callback : échange du code
-    ═══════════════════════════════════════════════════ */
     async function handleCallback(code, state) {
       showPage('page-callback');
-
-      /* Vérification du state anti-CSRF */
       const savedState = localStorage.getItem('oauth_state');
       if (state !== savedState) {
         showError('Paramètre state invalide (possible CSRF). Veuillez réessayer.');
         return;
       }
       localStorage.removeItem('oauth_state');
-
-      /* Échange code → token */
       try {
         document.getElementById('callback-sub').textContent = 'Échange du code d\'autorisation…';
-
         const res = await fetch(`${CONFIG.API_BASE}/api/v1/oauth/token`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             grant_type:    'authorization_code',
-            code:          code,
+            code,
             redirect_uri:  CONFIG.REDIRECT_URI,
             client_id:     CONFIG.CLIENT_ID,
             client_secret: CONFIG.CLIENT_SECRET,
           }),
         });
-
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
           showError(err.detail || `Erreur serveur (${res.status})`);
           return;
         }
-
         const { access_token } = await res.json();
-
-        /* Nettoyer l'URL (retirer code & state) */
         const clean = window.location.origin + window.location.pathname;
         window.history.replaceState({}, '', clean);
-
-        /* Récupérer les infos user */
         document.getElementById('callback-sub').textContent = 'Chargement de votre profil…';
         await loadDashboard(access_token);
-
       } catch (e) {
         showError('Impossible de contacter le serveur d\'authentification.');
         console.error(e);
       }
     }
 
-    /* ═══════════════════════════════════════════════════
-       STEP 3 — Charger le dashboard
-    ═══════════════════════════════════════════════════ */
     async function loadDashboard(token) {
       let userData = {};
-
-      /* Décoder le JWT pour récupérer user_id */
       const payload = parseJwt(token);
       const userId = payload.sub || payload.user_id;
-
       if (userId) {
         try {
           const res = await fetch(`${CONFIG.API_BASE}/api/v1/users/${userId}`, {
@@ -1162,46 +1072,30 @@
           if (res.ok) userData = await res.json();
         } catch (_) {}
       }
-
-      /* Afficher les données user */
       const first = userData.first_name || payload.first_name || '';
       const last  = userData.last_name  || payload.last_name  || '';
       const email = userData.email      || payload.email      || '';
-
       const fullName = [first, last].filter(Boolean).join(' ') || email || 'Utilisateur';
       document.getElementById('dash-name').textContent = fullName;
       document.getElementById('nav-user-name').textContent = fullName;
       document.getElementById('nav-avatar').textContent = initials(first, last);
       document.getElementById('account-holder').textContent = fullName.toUpperCase();
-
-      /* Token debug */
-      const tokenDisplay = document.getElementById('token-display');
-      tokenDisplay.textContent = token;
-
-      /* Sauvegarder le token */
+      document.getElementById('token-display').textContent = token;
       sessionStorage.setItem('nova_token', token);
-
       showPage('page-dashboard');
     }
 
-    /* ═══════════════════════════════════════════════════
-       LOGOUT
-    ═══════════════════════════════════════════════════ */
     function logout() {
       sessionStorage.removeItem('nova_token');
       sessionStorage.removeItem('oauth_state');
       showLanding();
     }
 
-    /* ═══════════════════════════════════════════════════
-       ROUTER — Détection au chargement
-    ═══════════════════════════════════════════════════ */
     (function init() {
-      const params = new URLSearchParams(window.location.search);
-      const code   = params.get('code');
-      const state  = params.get('state');
-      const error  = params.get('error');
-
+      const params    = new URLSearchParams(window.location.search);
+      const code      = params.get('code');
+      const state     = params.get('state');
+      const error     = params.get('error');
       const savedToken = sessionStorage.getItem('nova_token');
 
       if (error) {
